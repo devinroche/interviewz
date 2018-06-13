@@ -24,3 +24,15 @@ similar to stack, but last in last out.
 <div style="text-align:center"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Data_Queue.svg/600px-Data_Queue.svg.png"/></div>
 
 
+### implement 
+
+#### with linked list
+- [ ] enqueue(value) - adds value at position at tail
+- [ ] dequeue() - returns value and removes least recently added element (front)
+- [ ] empty()
+
+#### with array
+- [ ] enqueue(value) - adds item at end of available storage
+- [ ] dequeue() - returns value and removes least recently added element
+- [ ] empty()
+- [ ] full()
