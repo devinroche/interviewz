@@ -58,3 +58,5 @@ function test(){
 }
 
 test()
+
+export default Graph

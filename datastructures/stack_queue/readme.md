@@ -32,7 +32,5 @@ similar to stack, but last in last out.
 - [ ] empty()
 
 #### with array
-- [ ] enqueue(value) - adds item at end of available storage
-- [ ] dequeue() - returns value and removes least recently added element
-- [ ] empty()
-- [ ] full()
+- [x] enqueue(value) - adds item at end of available storage
+- [x] dequeue() - returns value and removes least recently added element

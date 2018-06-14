@@ -1,8 +1,7 @@
 # Hash Table
 
 ### implement
-- [ ] hash(k, m) - m is size of hash table
-- [ ] add(key, value) - if key already exists, update value
-- [ ] exists(key)
-- [ ] get(key)
-- [ ] remove(key)
+- [x] add(key, value) - if key already exists, update value
+- [x] exists(key)
+- [x] get(key)
+- [x] remove(key)

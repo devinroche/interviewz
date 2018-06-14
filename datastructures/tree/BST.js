@@ -38,8 +38,6 @@ class BST {
         }
     }
     remove(value){
-        // not implemented yet
-
         // case 1: no child
         // case 2: 1 child
         // case 3: 2 children ouch
@@ -81,6 +79,29 @@ class BST {
             console.log(curr.value)
         }
     }
+    height(curr = this.root){
+        if(curr === null) return 0
+
+        let l_height = this.height(curr.left);
+        let r_height = this.height(curr.right);
+
+        return l_height > r_height ? l_height + 1 : r_height + 1
+    }
+    count(curr = this.root){
+        if (curr === null) { 
+            return 0
+        }
+        else if(curr.left === null && curr.right === null){
+            return 1
+        }
+        return this.count(curr.left) + this.count(curr.right) + 1
+    }
+    max(curr = this.root){
+        if (curr.right !== null) {
+            return this.max(curr.right)
+        }
+        return curr.value
+    }
 }
 
 function test(){
@@ -92,11 +113,13 @@ function test(){
         bst.add(num)
     }
     
-    bst.preorder()
+    // bst.preorder()
     console.log('----------')
-    bst.inorder()
-    console.log('----------')
-    bst.postorder()
+    // bst.inorder()
+    // console.log('----------')
+    // bst.postorder()
+    // console.log(bst.count())
+    console.log(bst.max())
 }
 
 test()
