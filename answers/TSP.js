@@ -3,7 +3,7 @@ const Graph = require('../datastructures/graph/weighted_graph')
 function TSP(){
     let g = new Graph();
 
-    for(var i=1; i<=5; i++){
+    for(var i=1; i<=4; i++){
         g.addNode(i)
     }
 
@@ -30,18 +30,25 @@ function TSP(){
     let distance = 0
     let tmp_node = g.vertices[1]
     let foo;
-
+    var counter =0 
     while(!done){
         foo = findShort(tmp_node)
+        console.log(foo)
+    //     visited.push(foo.node)
+    //     no_visit = removeEl(no_visit, foo.node)
 
-        visited.push(foo.node)
-        no_visit = removeEl(no_visit, foo.node)
-
-        distance += foo.weight;
+    //     distance += foo.weight;
         tmp_node = g.vertices[foo.node]
 
-        if(visited.length === Object.keys(g.vertices).length+1 && no_visit.length === 0)
+    //    g.vertices = removeNode(foo, g.vertices)
+        removeNode(foo, g.vertices)
+        counter +=1
+        console.log(counter)
+        // if(no_visit.length === 0)
+        if(counter === 4)
             done = true;
+
+        
     }
 
     console.log(visited)
@@ -52,28 +59,28 @@ function removeEl(arr, el) {
     return arr.filter(e => e !== el);
 }
 
+function removeNode(node, verts){
+    let tmp = Object.keys(verts).map(el => {
+        var idx = verts[el].edges.map(ele => ele.node).indexOf(el.node)
+        verts[el].edges.splice(idx, 1)
+        return verts[el]
+    })
+
+    // tmp.map(el => console.log(el.edges))
+
+    tmp.reduce( (res, item, idx, arr) => {
+        res[idx] = item;
+        return res
+    }, {})
+
+    console.log(tmp)
+    return tmp
+}
+
 function findShort(node){
     return node.edges.sort( (a, b) => {
         return a.weight - b.weight
     })[0]
 }
-
-// function test(){
-//     let g = new Graph();
-
-//     for(var i=1; i<=5; i++){
-//         g.addNode(i)
-//     }
-
-//     g.addEdge(1, 2, 4)
-//     g.addEdge(1, 3, 6)
-    
-//     g.addEdge(2, 4, 3)
-//     g.addEdge(3, 5, 2)
-
-//     g.addEdge(4, 5, 8)
-
-//     console.log(g.vertices)
-// }
 
 TSP()
