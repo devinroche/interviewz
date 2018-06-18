@@ -57,6 +57,4 @@ function test(){
     console.log(g.vertices)
 }
 
-test()
-
-export default Graph
+module.exports = Graph
