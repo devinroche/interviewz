@@ -82,19 +82,18 @@ function easyDial(num){
     let visited = []
     let unvisited = numArr
 
-    let a = g.vertices[numArr[0]]
-    let b
+    let a_node = g.vertices[numArr[0]]
 
     while(unvisited){
-        b = nextNode(a, unvisited)
-        visited.push(a.value)
+        let b_node = nextNode(a_node, unvisited)
+        visited.push(a_node.value)
 
-        if(b === true)
+        if(b_node === true)
             break
 
-        b = g.vertices[b]
-        unvisited = removeEl(unvisited, a)
-        a = b
+        b_node = g.vertices[b_node]
+        unvisited = removeEl(unvisited, a_node)
+        a_node = b_node
     }
 
     console.log('Valid:', num)
@@ -105,7 +104,7 @@ function nextNode(el, unvisited){
         return true
 
     if(el.edges.find( el => el === unvisited[1]) === undefined)
-        throw "element not in list, invalid phone number"
+        throw `element not in list, invalid phone number ${unvisited}`
     
     else
         return el.edges.find( el => el === unvisited[1])
